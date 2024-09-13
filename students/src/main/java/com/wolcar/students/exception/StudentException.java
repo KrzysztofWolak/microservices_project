@@ -1,0 +1,17 @@
+package com.wolcar.students.exception;
+
+import com.wolcar.students.domain.Student;
+
+public class StudentException extends RuntimeException {
+
+    private StudentError studentError;
+
+
+    public StudentException(StudentError studentError) {
+        this.studentError = studentError;
+    }
+
+    public StudentError getStudentError() {
+        return studentError;
+    }
+}
