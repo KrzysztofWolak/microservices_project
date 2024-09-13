@@ -16,7 +16,7 @@ public class StudentExceptionHandler {
         else if (StudentError.EMAIL_ALREADY_EXISTS.equals(e.getStudentError())) httpStatus = HttpStatus.CONFLICT;
         else if (StudentError.STUDENT_STATUS_INACTIVE.equals(e.getStudentError())) httpStatus = HttpStatus.BAD_REQUEST;
 
-                return ResponseEntity.status(httpStatus).body(new ErrorInfo(e.getStudentError().getMessage()));
+        return ResponseEntity.status(httpStatus).body(new ErrorInfo(e.getStudentError().getMessage()));
     }
 
 }

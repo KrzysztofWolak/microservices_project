@@ -19,7 +19,8 @@ import java.util.List;
 @Getter
 @Setter
 public class Course {
-    public Course() {}
+    public Course() {
+    }
 
     public enum Status {
         ACTIVE, INACTIVE, FULL

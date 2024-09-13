@@ -10,10 +10,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 public class CoursesApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CoursesApplication.class, args);
-		System.out.println("start");
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CoursesApplication.class, args);
+        System.out.println("start");
+    }
 
 
 }

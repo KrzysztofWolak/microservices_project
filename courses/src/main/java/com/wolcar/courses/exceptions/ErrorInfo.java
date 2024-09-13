@@ -1,7 +1,7 @@
 package com.wolcar.courses.exceptions;
 
 public class ErrorInfo {
-    private  String message;
+    private String message;
 
     public ErrorInfo(String message) {
         this.message = message;

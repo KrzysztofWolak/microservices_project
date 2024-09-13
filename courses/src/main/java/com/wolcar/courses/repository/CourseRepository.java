@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CourseRepository extends MongoRepository <Course, String> {
-    List <Course> findAllByStatus(Course.Status status);
+public interface CourseRepository extends MongoRepository<Course, String> {
+    List<Course> findAllByStatus(Course.Status status);
 }

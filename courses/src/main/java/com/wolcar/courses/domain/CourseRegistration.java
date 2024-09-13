@@ -19,6 +19,7 @@ public class CourseRegistration {
 
     @NotBlank
     private LocalDate studentJoinDate;
+
     public CourseRegistration(@NotNull String email) {
         this.email = email;
         studentJoinDate = LocalDate.now();

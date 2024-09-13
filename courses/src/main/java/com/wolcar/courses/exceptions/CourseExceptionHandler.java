@@ -13,9 +13,9 @@ public class CourseExceptionHandler {
     public ResponseEntity<ErrorInfo> handlerException(CourseException e) {
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         if (CourseError.COURSE_NOT_FOUND.equals(e.getCourseError())) httpStatus = HttpStatus.NOT_FOUND;
-         else if (CourseError.COURSE_LIMIT_REACHED.equals(e.getCourseError())) httpStatus = HttpStatus.FORBIDDEN;
+        else if (CourseError.COURSE_LIMIT_REACHED.equals(e.getCourseError())) httpStatus = HttpStatus.FORBIDDEN;
         else if (CourseError.INCORRECT_FULL_STATUS.equals(e.getCourseError())) httpStatus = HttpStatus.CONFLICT;
-        else if (CourseError.INCORRECT_ENDDATE.equals(e.getCourseError())) httpStatus = HttpStatus.BAD_REQUEST;
+        else if (CourseError.INCORRECT_END_DATE.equals(e.getCourseError())) httpStatus = HttpStatus.BAD_REQUEST;
         else if (CourseError.STUDENT_STATUS_NOT_ACTIVE.equals(e.getCourseError())) httpStatus = HttpStatus.BAD_REQUEST;
         else if (CourseError.STUDENT_NOT_FOUND.equals(e.getCourseError())) httpStatus = HttpStatus.NOT_FOUND;
         else if (CourseError.COURSE_STATUS_FULL.equals(e.getCourseError())) httpStatus = HttpStatus.CONFLICT;

@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentsController {
 
-
     private final StudentServiceImpl studentService;
 
     @Autowired
@@ -24,12 +23,10 @@ public class StudentsController {
         this.studentService = studentService;
     }
 
-
     @GetMapping
     public List<Student> getStudents(@RequestParam(required = false) Student.Status status) {
-        if (status != null)  return studentService.getStudents(status);
+        if (status != null) return studentService.getStudents(status);
         return studentService.getAll();
-
     }
 
     @PostMapping
@@ -45,7 +42,7 @@ public class StudentsController {
 
     @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable int id) {
-         studentService.deleteStudent(id);
+        studentService.deleteStudent(id);
     }
 
     @PutMapping("/{id}")
@@ -55,16 +52,16 @@ public class StudentsController {
 
     @PatchMapping("/{id}")
     public Student editStudent(@PathVariable int id, @RequestBody Student student) {
-        return studentService.patchStudent(id,student);
+        return studentService.patchStudent(id, student);
     }
 
-    @GetMapping ("/name")
-    public List<Student> findByName (@RequestParam String name) {
+    @GetMapping("/name")
+    public List<Student> findByName(@RequestParam String name) {
         return studentService.getStudentByName(name);
     }
 
-    @GetMapping ("/nameNot")
-    public List<Student> findWhereNameNotLike (@RequestParam String surname, @RequestParam String name) {
+    @GetMapping("/nameNot")
+    public List<Student> findWhereNameNotLike(@RequestParam String surname, @RequestParam String name) {
         return studentService.getStudentNameNotLike(name, surname);
     }
 }

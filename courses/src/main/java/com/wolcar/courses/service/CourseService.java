@@ -18,9 +18,6 @@ public interface CourseService {
 
     Course patchCourse(String code, Course course);
 
-    void addStudentToCourse(String courseCode,int studentId);
-    StudentDto pobieramtegotypa (int id );
-
-    List<StudentDto> pobieramWszystkich();
+    void addStudentToCourse(String courseCode, int studentId);
 
 }

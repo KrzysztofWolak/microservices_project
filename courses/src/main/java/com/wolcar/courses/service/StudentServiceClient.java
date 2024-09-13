@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient (name = "STUDENT-SERVICE")
+@FeignClient(name = "STUDENT-SERVICE")
 public interface StudentServiceClient {
 
     @GetMapping("/students")
     List<StudentDto> getStudents();
 
     @GetMapping("/students/{id}")
-    StudentDto getStudentById(@PathVariable  int id);
+    StudentDto getStudentById(@PathVariable int id);
 }

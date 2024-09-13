@@ -49,18 +49,10 @@ public class CourseController {
     public Course editStudent(@PathVariable String code, @RequestBody Course course) {
         return courseService.patchCourse(code, course);
     }
+
     @PostMapping("/{courseCode}/student/{studentId}")
     public ResponseEntity<?> addStudentToCourse(@PathVariable String courseCode, @PathVariable int studentId) {
         courseService.addStudentToCourse(courseCode, studentId);
         return ResponseEntity.ok().build();
-    }
-    @GetMapping("/stud/{id}")
-    StudentDto getStudentDto (@PathVariable int id){
-       return courseService.pobieramtegotypa(id);
-    }
-
-    @GetMapping ("/test")
-    public List<StudentDto> getStudentsDto(){
-        return courseService.pobieramWszystkich();
     }
 }

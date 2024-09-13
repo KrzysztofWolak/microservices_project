@@ -106,15 +106,6 @@ public class CourseServiceImpl implements CourseService {
 
     }
 
-    @Override
-    public StudentDto pobieramtegotypa(int id) {
-        return studentServiceClient.getStudentById(id);
-    }
-
-    public List<StudentDto> pobieramWszystkich(){
-        return studentServiceClient.getStudents();
-    }
-
     private static void courseValidationToAddStudent(Course course) {
         if (course.getParticipantsNumber().equals(course.getParticipantsLimit()))
             throw new CourseException(CourseError.COURSE_STATUS_FULL);
@@ -140,6 +131,6 @@ public class CourseServiceImpl implements CourseService {
                 && course.getParticipantsNumber() < course.getParticipantsLimit())
             throw new CourseException(CourseError.INCORRECT_FULL_STATUS);
         if (course.getEndDate().isBefore(course.getStartDate()))
-            throw new CourseException(CourseError.INCORRECT_ENDDATE);
+            throw new CourseException(CourseError.INCORRECT_END_DATE);
     }
 }

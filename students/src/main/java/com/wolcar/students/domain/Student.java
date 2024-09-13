@@ -22,11 +22,11 @@ public class Student {
     @Enumerated(EnumType.STRING)
     private Student.Status status;
 
-
     @NotNull
     public enum Status {
         ACTIVE, INACTIVE
     }
+
     @NotBlank(message = "To pole musi byc wypełnione")
     private String name;
 

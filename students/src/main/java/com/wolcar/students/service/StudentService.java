@@ -9,20 +9,19 @@ public interface StudentService {
 
     Student getStudentById(int id);
 
-    Student addStudent (Student student);
+    Student addStudent(Student student);
 
-    void deleteStudent (int id);
+    void deleteStudent(int id);
 
-    Student putStudent (int id, Student student);
+    Student putStudent(int id, Student student);
 
-    Student patchStudent (int id, Student student);
+    Student patchStudent(int id, Student student);
 
     List<Student> getStudentByName(String name);
 
     List<Student> getStudentNameNotLike(String name, String surname);
+
     List<Student> getAll();
-
-
 
 
 }
