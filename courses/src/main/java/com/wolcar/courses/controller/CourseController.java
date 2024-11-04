@@ -1,24 +1,20 @@
 package com.wolcar.courses.controller;
 
 import com.wolcar.courses.domain.Course;
-import com.wolcar.courses.domain.dto.StudentDto;
 import com.wolcar.courses.service.CourseService;
-import com.wolcar.courses.service.StudentServiceClient;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController  //Sprinh Web annotation
 @RequestMapping("/courses")
+@RequiredArgsConstructor  //Lombok annotation
 public class CourseController {
 
     private final CourseService courseService;
-
-    public CourseController(CourseService courseService) {
-        this.courseService = courseService;
-    }
 
     @GetMapping
     public List<Course> getCourses(@RequestParam(required = false) Course.Status status) {
@@ -37,7 +33,7 @@ public class CourseController {
 
     @DeleteMapping("/{code}")
     public void deleteCourse(@PathVariable String code) {
-        courseService.deleteStudent(code);
+        courseService.deleteCourse(code);
     }
 
     @PutMapping("/{code}")
@@ -50,7 +46,7 @@ public class CourseController {
         return courseService.patchCourse(code, course);
     }
 
-    @PostMapping("/{courseCode}/student/{studentId}")
+    @PostMapping("/{courseCode}/students/{studentId}")
     public ResponseEntity<?> addStudentToCourse(@PathVariable String courseCode, @PathVariable int studentId) {
         courseService.addStudentToCourse(courseCode, studentId);
         return ResponseEntity.ok().build();

@@ -1,27 +1,20 @@
 package com.wolcar.students.controller;
 
-import com.wolcar.students.repository.StudentRepository;
 import com.wolcar.students.domain.Student;
 import com.wolcar.students.service.StudentServiceImpl;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/students")
+@RequiredArgsConstructor
 public class StudentsController {
 
     private final StudentServiceImpl studentService;
-
-    @Autowired
-    public StudentsController(StudentRepository studentRepository, StudentServiceImpl studentService) {
-        this.studentService = studentService;
-    }
 
     @GetMapping
     public List<Student> getStudents(@RequestParam(required = false) Student.Status status) {

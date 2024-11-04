@@ -3,13 +3,15 @@ package com.wolcar.students.service;
 import com.wolcar.students.domain.Student;
 import com.wolcar.students.exception.StudentError;
 import com.wolcar.students.exception.StudentException;
-import com.wolcar.students.repository.StudentRepository;
+import com.wolcar.students.domain.StudentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
@@ -17,10 +19,6 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> getAll() {
         return studentRepository.findAll();
-    }
-
-    public StudentServiceImpl(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
     }
 
     private void validateEmail(Student student) {

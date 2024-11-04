@@ -1,11 +1,12 @@
 package com.wolcar.courses.service;
 
 import com.wolcar.courses.domain.Course;
-import com.wolcar.courses.domain.CourseRegistration;
-import com.wolcar.courses.domain.dto.StudentDto;
+import com.wolcar.courses.service.dto.StudentDto;
 import com.wolcar.courses.exceptions.CourseError;
 import com.wolcar.courses.exceptions.CourseException;
-import com.wolcar.courses.repository.CourseRepository;
+import com.wolcar.courses.domain.CourseRepository;
+import com.wolcar.courses.service.dto.StudentServiceClient;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -13,15 +14,11 @@ import java.util.List;
 
 
 @Service
-public class CourseServiceImpl implements CourseService {
+@RequiredArgsConstructor // Lombok annotation
+public class CourseServiceImpl implements CourseService  {
 
     private final CourseRepository courseRepository;
     private final StudentServiceClient studentServiceClient;
-
-    public CourseServiceImpl(CourseRepository courseRepository, StudentServiceClient studentServiceClient) {
-        this.courseRepository = courseRepository;
-        this.studentServiceClient = studentServiceClient;
-    }
 
     @Override
     public List<Course> getCourses(Course.Status status) {
@@ -45,7 +42,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void deleteStudent(String code) {
+    public void deleteCourse(String code) {
         courseRepository.deleteById(code);
     }
 
@@ -100,13 +97,12 @@ public class CourseServiceImpl implements CourseService {
         StudentDto studentDto = studentServiceClient.getStudentById(studentId);
         System.out.println(studentDto.toString());
         studentValidationOnCourse(studentId, courseCode);
-        course.incrementParticipantsNumber();
-        course.getCourseRegistrationList().add(new CourseRegistration(studentDto.getEmail()));
+        course.registerStudent(studentDto.getEmail());
         courseRepository.save(course);
 
     }
 
-    private static void courseValidationToAddStudent(Course course) {
+     static void courseValidationToAddStudent(Course course) {
         if (course.getParticipantsNumber().equals(course.getParticipantsLimit()))
             throw new CourseException(CourseError.COURSE_STATUS_FULL);
         if (!course.getStatus().equals(Course.Status.ACTIVE))

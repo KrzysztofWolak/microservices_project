@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Document
+@Document  //mongoDb annotation
 @Getter
 @Setter
 public class Course {
@@ -50,13 +51,8 @@ public class Course {
     @NotNull
     private Status status;
 
+    @Setter(AccessLevel.NONE)
     private List<CourseRegistration> courseRegistrationList = new ArrayList<>();
-
-    public void incrementParticipantsNumber() {
-        participantsNumber++;
-        if (participantsNumber == participantsLimit)
-            setStatus(Course.Status.FULL);
-    }
 
     public Status getStatus() {
         return status;
@@ -64,5 +60,17 @@ public class Course {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    private void incrementParticipantsNumber() {
+        participantsNumber++;
+        if (participantsNumber == participantsLimit) {
+            setStatus(Status.FULL);
+        }
+    }
+
+    public void registerStudent(String email) {
+        courseRegistrationList.add(new CourseRegistration(email));
+        incrementParticipantsNumber();
     }
 }

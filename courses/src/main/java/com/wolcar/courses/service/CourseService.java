@@ -1,7 +1,6 @@
 package com.wolcar.courses.service;
 
 import com.wolcar.courses.domain.Course;
-import com.wolcar.courses.domain.dto.StudentDto;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface CourseService {
 
     Course addCourse(Course course);
 
-    void deleteStudent(String code);
+    void deleteCourse(String code);
 
     Course putCourse(String code, Course course);
 
