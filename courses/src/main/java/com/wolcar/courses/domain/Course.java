@@ -2,6 +2,10 @@ package com.wolcar.courses.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -9,14 +13,12 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Document  //mongoDb annotation
+@Entity
 @Getter
 @Setter
 public class Course {
@@ -52,6 +54,7 @@ public class Course {
     private Status status;
 
     @Setter(AccessLevel.NONE)
+    @ElementCollection
     private List<CourseRegistration> courseRegistrationList = new ArrayList<>();
 
     public Status getStatus() {

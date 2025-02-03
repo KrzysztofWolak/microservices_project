@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController  //Sprinh Web annotation
+@RestController
 @RequestMapping("/courses")
-@RequiredArgsConstructor  //Lombok annotation
+@RequiredArgsConstructor
 public class CourseController {
 
     private final CourseService courseService;
