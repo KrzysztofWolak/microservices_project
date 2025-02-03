@@ -2,7 +2,6 @@ package com.wolcar.courses.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
