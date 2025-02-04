@@ -12,6 +12,7 @@ import java.time.LocalDate;
 
 @Getter
 @Embeddable
+@NoArgsConstructor
 public class CourseRegistration {
 
 

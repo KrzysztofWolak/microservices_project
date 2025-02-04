@@ -42,7 +42,7 @@ public class CourseController {
     }
 
     @PatchMapping("/{code}")
-    public Course editStudent(@PathVariable String code, @RequestBody Course course) {
+    public Course editCourse(@PathVariable String code, @RequestBody Course course) {
         return courseService.patchCourse(code, course);
     }
 
